@@ -62,20 +62,29 @@ Vercel actualizará automáticamente tu sitio en 1-2 minutos.
 
 ## Características del Portfolio
 
+- Diseño minimalista profesional (negro + dorado)
+- Sistema de navegación multipágina (Inicio, Proyectos, Notas)
 - Efecto de escritura automática en el Hero
-- Tarjetas con efecto glow al hacer hover
-- Bento Grid con animaciones suaves
+- Página de Notas Personales con carta de presentación
+- Página de Proyectos con sistema para documentación gráfica
+- Tarjetas minimalistas con hover sutil
 - Timeline vertical de experiencia
-- Sección de idiomas con insignia especial
-- Formulario de contacto con enlaces directos
+- Enlaces a GitHub y LinkedIn integrados
 - 100% Responsivo
 
 ## Personalización Rápida
 
-Para cambiar colores, edita `src/App.jsx` y busca:
-- `from-cyan-400` → Color principal
-- `to-violet-400` → Color secundario
-- `text-fuchsia-400` → Color de acento
+**Añadir nuevas notas personales:**
+- Edita `src/pages/Notes.jsx`
+- Añade un nuevo objeto al array `notes` con título, fecha, autor y contenido
+
+**Añadir nuevos proyectos:**
+- Edita `src/pages/Projects.jsx`
+- Añade un nuevo objeto al array `projects` con título, descripción, tags, fecha y enlaces
+
+**Cambiar colores:**
+- Edita `tailwind.config.js` para modificar el color `gold` (#b69d78)
+- Los demás colores en `src/pages/` usan `text-gold`, `border-gold`, etc.
 
 ## Problemas Comunes
 

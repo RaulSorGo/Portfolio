@@ -1,15 +1,17 @@
 # Portfolio de Raúl Soriano
 
-Portfolio personal moderno y profesional desarrollado con React, Vite, Tailwind CSS y Framer Motion.
+Portfolio personal moderno y profesional desarrollado con React, Vite, Tailwind CSS y Framer Motion. Diseño minimalista inspirado en estéticas elegantes con tipografía serif profesional.
 
 ## Características
 
-- Diseño Dark Mode Premium con efectos neón
+- Diseño minimalista con estética profesional (negro + dorado)
+- Sistema de navegación multipágina con React Router
+- Página de inicio con información completa del portfolio
+- Sección de Notas Personales para blog y reflexiones
+- Sección de Proyectos con documentación gráfica
 - Animaciones fluidas con Framer Motion
 - Efecto de escritura automática (Typewriter)
-- Tarjetas con efecto Glow al pasar el mouse
-- Bento Grid para habilidades
-- Timeline vertical de experiencia profesional
+- Tipografía elegante: Playfair Display (serif) + Inter (sans-serif)
 - 100% Responsivo (móvil y escritorio)
 - Optimizado para rendimiento
 
@@ -35,6 +37,7 @@ npm install
 
 Este comando instalará todas las dependencias necesarias:
 - React y React DOM
+- React Router DOM (navegación entre páginas)
 - Vite (herramienta de build)
 - Tailwind CSS (estilos)
 - Framer Motion (animaciones)

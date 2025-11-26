@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: #0a0a0a;
+  background: #000000;
   color: #ffffff;
   overflow-x: hidden;
 }
@@ -21,18 +21,53 @@ html {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00ffff, #a855f7);
-  border-radius: 5px;
+  background: #b69d78;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #00dddd, #9333ea);
+  background: #d4b896;
+}
+
+/* Rotating text animation */
+@keyframes rotateText {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Page transitions */
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: fadeInPage 0.4s ease-out;
 }
