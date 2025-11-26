@@ -1,5 +1,5 @@
-# Portfolio de Raúl Soriano
 
+<<<<<<< HEAD
 Portfolio personal moderno y profesional desarrollado con React, Vite, Tailwind CSS y Framer Motion. Diseño minimalista inspirado en estéticas elegantes con tipografía serif profesional.
 
 ## Características
@@ -298,3 +298,4 @@ Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 ---
 
 ¡Disfruta de tu nuevo portfolio! Si necesitas ayuda adicional, no dudes en contactarme.
+=
