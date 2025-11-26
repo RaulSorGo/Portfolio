@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
 Portfolio personal moderno y profesional desarrollado con React, Vite, Tailwind CSS y Framer Motion. Diseño minimalista inspirado en estéticas elegantes con tipografía serif profesional.
 
 ## Características

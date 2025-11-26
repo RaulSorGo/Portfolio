@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const RotatingButton = ({
   href,
@@ -24,19 +25,14 @@ const RotatingButton = ({
     ghost: "border border-white/10 text-gray-mid hover:border-gold/50 hover:text-gold"
   }
 
-  const linkProps = external ? {
-    target: "_blank",
-    rel: "noopener noreferrer"
-  } : {}
+  const commonProps = {
+    className: `${baseClasses} ${variantClasses[variant]} ${className}`,
+    onMouseEnter: () => setIsHovered(true),
+    onMouseLeave: () => setIsHovered(false)
+  }
 
-  return (
-    <a
-      href={href}
-      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      {...linkProps}
-    >
+  const content = (
+    <>
       {Icon && (
         <Icon className={`w-4 h-4 transition-transform duration-200 ${isHovered ? 'translate-x-1' : ''}`} />
       )}
@@ -48,7 +44,28 @@ const RotatingButton = ({
       >
         {children}
       </span>
-    </a>
+    </>
+  )
+
+  // Si es un enlace externo o empieza con # (anchor), usar <a>
+  if (external || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+    const linkProps = external ? {
+      target: "_blank",
+      rel: "noopener noreferrer"
+    } : {}
+
+    return (
+      <a href={href} {...commonProps} {...linkProps}>
+        {content}
+      </a>
+    )
+  }
+
+  // Para rutas internas, usar Link de React Router
+  return (
+    <Link to={href} {...commonProps}>
+      {content}
+    </Link>
   )
 }
 
