@@ -1,10 +1,22 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Navigation from './components/Navigation'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
+import ProjectDetail from './pages/ProjectDetail'
 import Notes from './pages/Notes'
 import Contact from './pages/Contact'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -14,6 +26,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/proyectos" element={<Projects />} />
+        <Route path="/proyectos/:id" element={<ProjectDetail />} />
         <Route path="/notas" element={<Notes />} />
         <Route path="/contacto" element={<Contact />} />
       </Routes>
@@ -24,6 +37,7 @@ function AnimatedRoutes() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-black">
         <Navigation />
         <AnimatedRoutes />

@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, ArrowLeft, Calendar, Tag } from 'lucide-react'
+import { ExternalLink, Github, ArrowLeft, Calendar, Tag, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import RotatingButton from '../components/RotatingButton'
+import { projects } from '../data/projects'
 
 const ProjectCard = ({ project, delay = 0 }) => {
   return (
@@ -12,23 +13,27 @@ const ProjectCard = ({ project, delay = 0 }) => {
       transition={{ duration: 0.5, delay }}
       className="border border-white/10 rounded-xl overflow-hidden hover:border-gold/50 transition-all duration-200 group"
     >
-      {/* Project Image/Placeholder */}
-      <div className="aspect-video bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center border-b border-white/10">
-        <div className="text-center space-y-4 p-8">
-          <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center">
-            <Tag className="w-12 h-12 text-gold" />
+      {/* Project Image/Placeholder - Clickable */}
+      <Link to={`/proyectos/${project.id}`}>
+        <div className="aspect-video bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center border-b border-white/10 cursor-pointer">
+          <div className="text-center space-y-4 p-8">
+            <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Tag className="w-12 h-12 text-gold" />
+            </div>
+            <p className="text-gray-mid text-sm">Vista previa próximamente</p>
           </div>
-          <p className="text-gray-mid text-sm">Vista previa próximamente</p>
         </div>
-      </div>
+      </Link>
 
       {/* Project Info */}
       <div className="p-8 space-y-6">
         {/* Title and Description */}
         <div className="space-y-3">
-          <h3 className="text-2xl md:text-3xl font-serif text-white group-hover:text-gold transition-colors">
-            {project.title}
-          </h3>
+          <Link to={`/proyectos/${project.id}`}>
+            <h3 className="text-2xl md:text-3xl font-serif text-white group-hover:text-gold transition-colors cursor-pointer">
+              {project.title}
+            </h3>
+          </Link>
           <p className="text-gray-mid leading-relaxed">
             {project.description}
           </p>
@@ -53,8 +58,16 @@ const ProjectCard = ({ project, delay = 0 }) => {
         </div>
 
         {/* Links */}
-        {project.links?.github && (
-          <div className="pt-4">
+        <div className="flex flex-wrap gap-3 pt-4">
+          <RotatingButton
+            href={`/proyectos/${project.id}`}
+            icon={ArrowRight}
+            variant="primary"
+            size="small"
+          >
+            Ver detalles
+          </RotatingButton>
+          {project.links?.github && (
             <RotatingButton
               href={project.links.github}
               icon={Github}
@@ -62,40 +75,16 @@ const ProjectCard = ({ project, delay = 0 }) => {
               size="small"
               external={true}
             >
-              Ver código
+              Código
             </RotatingButton>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </motion.article>
   )
 }
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "Portfolio Personal Minimalista",
-      description: "Portfolio profesional desarrollado con React, Vite, Tailwind CSS y Framer Motion. Diseño minimalista con estética elegante inspirada en tipografía serif y espacios en blanco generosos.",
-      tags: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Responsive Design"],
-      date: "Enero 2025",
-      links: {
-        github: "https://github.com/RaulSorGo",
-        demo: "#"
-      }
-    },
-    // Puedes añadir más proyectos siguiendo este formato:
-    // {
-    //   title: "Nombre del Proyecto",
-    //   description: "Descripción detallada del proyecto, tecnologías utilizadas y problemas resueltos.",
-    //   tags: ["Tech1", "Tech2", "Tech3"],
-    //   date: "Mes Año",
-    //   links: {
-    //     github: "https://github.com/...",
-    //     demo: "https://..."
-    //   }
-    // },
-  ]
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -138,7 +127,7 @@ const Projects = () => {
           {projects.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {projects.map((project, idx) => (
-                <ProjectCard key={idx} project={project} delay={idx * 0.1} />
+                <ProjectCard key={project.id} project={project} delay={idx * 0.1} />
               ))}
             </div>
           ) : (
